@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gourmet & Artisan Lounge — Beranda</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="{{ url_for('index') }}" class="logo">
+                <span class="logo-accent">✦</span> Luminary Bistro
+            </a>
+            <div class="nav-links">
+                <a href="{{ url_for('index') }}" class="nav-item active">Beranda</a>
+                <a href="{{ url_for('form') }}" class="nav-item">Pesan Menu</a>
+                <a href="{{ url_for('hasil') }}" class="nav-item">Riwayat Pesanan</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <section class="hero-card">
+            <div class="badge-pill">✨ Modern Culinary Experience</div>
+            <h1 class="hero-title">Harmoni Rasa Terbaik dalam Sentuhan Modern</h1>
+            <p class="hero-subtitle">Nikmati pengalaman kuliner artisanal pilihan dengan perpaduan racikan kopi premium, sajian hidangan utama lezat, hingga hidangan penutup eksklusif yang memanjakan lidah Anda.</p>
+            
+            <div class="hero-actions">
+                <a href="{{ url_for('form') }}" class="btn btn-primary">Mulai Pesan Sekarang →</a>
+                <a href="{{ url_for('hasil') }}" class="btn btn-secondary">Lihat Semua Pesanan</a>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">☕</div>
+                    <h3>Specialty Coffee</h3>
+                    <p>Biji kopi pilihan Nusantara dipanggang dengan standar barista internasional.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🥩</div>
+                    <h3>Gourmet Mains</h3>
+                    <p>Sajian daging premium dan pasta segar diracik oleh chef berpengalaman.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🍰</div>
+                    <h3>Artisan Dessert</h3>
+                    <p>Pastry panggang segar setiap hari dengan bahan-bahan alami terbaik.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

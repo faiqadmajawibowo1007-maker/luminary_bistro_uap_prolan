@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pemesanan Menu — Luminary Bistro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="{{ url_for('index') }}" class="logo">
+                <span class="logo-accent">✦</span> Luminary Bistro
+            </a>
+            <div class="nav-links">
+                <a href="{{ url_for('index') }}" class="nav-item">Beranda</a>
+                <a href="{{ url_for('form') }}" class="nav-item active">Pesan Menu</a>
+                <a href="{{ url_for('hasil') }}" class="nav-item">Riwayat Pesanan</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="form-container">
+            <div class="glass-card">
+                <div class="card-header">
+                    <span class="badge-tag">Formulir Pesanan</span>
+                    <h2>Pilih Hidangan Favorit Anda</h2>
+                    <p>Lengkapi identitas pemesan dan tentukan sajian kuliner yang ingin Anda nikmati.</p>
+                </div>
+
+                <form action="{{ url_for('form') }}" method="POST" class="modern-form">
+                    <div class="input-grid">
+                        <div class="form-group">
+                            <label for="id">ID Pesanan</label>
+                            <div class="input-wrapper">
+                                <span class="input-icon">#</span>
+                                <input type="text" id="id" name="id" required placeholder="Contoh: ORD-101">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="nama">Nama Lengkap</label>
+                            <div class="input-wrapper">
+                                <span class="input-icon">👤</span>
+                                <input type="text" id="nama" name="nama" required placeholder="Contoh: Budi Santoso">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-grid">
+                        <div class="form-group">
+                            <label for="usia">Usia Pelanggan</label>
+                            <div class="input-wrapper">
+                                <span class="input-icon">🎂</span>
+                                <input type="number" id="usia" name="usia" required min="1" max="120" placeholder="Contoh: 21">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="menu">Pilihan Menu Spesial</label>
+                            <div class="input-wrapper">
+                                <span class="input-icon">🍽️</span>
+                                <select id="menu" name="menu" required>
+                                    <option value="">-- Pilih Sajian Menu --</option>
+                                    <optgroup label="☕ Signature Specialty Coffee">
+                                        <option value="Espresso Romano Velvet">Espresso Romano Velvet</option>
+                                        <option value="Caramel Macchiato Artisanal">Caramel Macchiato Artisanal</option>
+                                        <option value="Matcha Espresso Fusion">Matcha Espresso Fusion</option>
+                                        <option value="Hazelnut Cold Brew Glaze">Hazelnut Cold Brew Glaze</option>
+                                    </optgroup>
+                                    <optgroup label="🥩 Gourmet Main Course">
+                                        <option value="Truffle Wagyu Beef Bowl">Truffle Wagyu Beef Bowl</option>
+                                        <option value="Smoked Salmon Aglio Olio">Smoked Salmon Aglio Olio</option>
+                                        <option value="Herb Butter Grilled Chicken">Herb Butter Grilled Chicken</option>
+                                        <option value="Creamy Wild Mushroom Risotto">Creamy Wild Mushroom Risotto</option>
+                                    </optgroup>
+                                    <optgroup label="🍰 Artisan Bakery & Dessert">
+                                        <option value="Belgian Chocolate Lava Croissant">Belgian Chocolate Lava Croissant</option>
+                                        <option value="Basque Burnt Cheesecake">Basque Burnt Cheesecake</option>
+                                        <option value="Classic Tiramisu Kahlua">Classic Tiramisu Kahlua</option>
+                                    </optgroup>
+                                    <optgroup label="🍹 Refreshers & Mocktails">
+                                        <option value="Sparkling Yuzu Mint Cooler">Sparkling Yuzu Mint Cooler</option>
+                                        <option value="Berry Blossom Botanical Fizz">Berry Blossom Botanical Fizz</option>
+                                        <option value="Blue Lagoon Tropical Quencher">Blue Lagoon Tropical Quencher</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-submit">
+                        Konfirmasi & Kirim Pesanan ✦
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

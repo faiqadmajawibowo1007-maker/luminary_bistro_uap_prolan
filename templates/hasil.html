@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riwayat Pesanan — Luminary Bistro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="{{ url_for('index') }}" class="logo">
+                <span class="logo-accent">✦</span> Luminary Bistro
+            </a>
+            <div class="nav-links">
+                <a href="{{ url_for('index') }}" class="nav-item">Beranda</a>
+                <a href="{{ url_for('form') }}" class="nav-item">Pesan Menu</a>
+                <a href="{{ url_for('hasil') }}" class="nav-item active">Riwayat Pesanan</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="result-container">
+            <div class="glass-card">
+                <div class="result-header">
+                    <div>
+                        <span class="badge-tag">Database Hasil</span>
+                        <h2>Riwayat Pesanan Terdaftar</h2>
+                        <p>Daftar seluruh pesanan kuliner yang telah diproses oleh sistem.</p>
+                    </div>
+                    <a href="{{ url_for('form') }}" class="btn btn-primary btn-sm">+ Tambah Baru</a>
+                </div>
+
+                <form action="{{ url_for('hasil') }}" method="GET" class="search-bar-modern">
+                    <div class="search-input-box">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" name="q" value="{{ q }}" placeholder="Cari berdasarkan ID atau Nama Pemesan...">
+                    </div>
+                    <button type="submit" class="btn btn-search">Cari</button>
+                    {% if q %}
+                    <a href="{{ url_for('hasil') }}" class="btn btn-reset">Reset</a>
+                    {% endif %}
+                </form>
+
+                <div class="table-responsive">
+                    <table class="modern-table">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>ID Pesanan</th>
+                                <th>Nama Pelanggan</th>
+                                <th>Usia</th>
+                                <th>Pilihan Menu</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if data %}
+                                {% for item in data %}
+                                <tr>
+                                    <td class="col-num">{{ loop.index }}</td>
+                                    <td><span class="badge-id">{{ item.id }}</span></td>
+                                    <td class="col-name">{{ item.nama }}</td>
+                                    <td>{{ item.usia }} thn</td>
+                                    <td><span class="menu-pill">{{ item.menu }}</span></td>
+                                    <td><span class="status-badge">Terkonfirmasi</span></td>
+                                </tr>
+                                {% endfor %}
+                            {% else %}
+                                <tr>
+                                    <td colspan="6" class="empty-state">
+                                        <div class="empty-content">
+                                            <span class="empty-icon">📂</span>
+                                            <p class="empty-title">Tidak ada data yang cocok</p>
+                                            <p class="empty-desc">Coba gunakan kata kunci pencarian lain atau tambahkan data pesanan baru.</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
